@@ -1,0 +1,68 @@
+# 加密货币价格监控服务配置
+
+# API 端点配置
+[Api]
+BinanceUrl = "https://api.binance.com/api/v3/ticker/price"
+BinanceKlineUrl = "https://api.binance.com/api/v3/klines"
+BybitUrl = "https://api.bybit.com/v5/market/tickers?category=spot"
+BybitKlineUrl = "https://api.bybit.com/v5/market/kline"
+CoinbaseUrlTemplate = "https://api.coinbase.com/v2/prices/%s-USD/spot"
+KrakenUrlTemplate = "https://api.kraken.com/0/public/Ticker?pair=%s"
+
+# 推送通知配置
+[Notify]
+NtfyTopic = "lazy"
+NtfyUrl = "https://ntfy.sh/lazy"
+
+# 监控配置
+[Monitor]
+CheckIntervalSeconds = 10
+AlertCooldownMinutes = 5
+
+# 价格告警规则
+[[PriceAlertRules]]
+Symbol = "BTC"
+Threshold = 60000.0
+Comparison = "<"
+
+[[PriceAlertRules]]
+Symbol = "ETH"
+Threshold = 2000.0
+Comparison = "<"
+
+[[PriceAlertRules]]
+Symbol = "SOL"
+Threshold = 91.0
+Comparison = ">"
+
+# 涨跌幅告警规则
+# Period 支持：daily (当日涨跌幅), 15m (15分钟涨跌幅)
+[[ChangeAlertRules]]
+Symbol = "BTC"
+ChangePercent = 10.0  # 涨跌幅超过 10%
+Period = "daily"      # 当日涨跌幅
+
+[[ChangeAlertRules]]
+Symbol = "ETH"
+ChangePercent = 10.0  # 涨跌幅超过 10%
+Period = "daily"      # 当日涨跌幅
+
+[[ChangeAlertRules]]
+Symbol = "SOL"
+ChangePercent = 10.0  # 涨跌幅超过 10%
+Period = "daily"      # 当日涨跌幅
+
+[[ChangeAlertRules]]
+Symbol = "BTC"
+ChangePercent = 5.0   # 15分钟涨跌幅超过 5%
+Period = "15m"        # 15分钟涨跌幅
+
+[[ChangeAlertRules]]
+Symbol = "ETH"
+ChangePercent = 5.0  # 15分钟涨跌幅超过 5%
+Period = "15m"        # 15分钟涨跌幅
+
+[[ChangeAlertRules]]
+Symbol = "SOL"
+ChangePercent = 5.0  # 15分钟涨跌幅超过 5%
+Period = "15m"        # 15分钟涨跌幅
